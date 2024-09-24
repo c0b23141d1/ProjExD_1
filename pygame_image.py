@@ -19,12 +19,15 @@ def main():
     kk_img = pg.transform.flip(kk_img,True,False) #左右反転 P44
     kk_ret = kk_img.get_rect() #練習8　サーフェースからレクとを抽出
     kk_ret.center = 300,200 #練習8-2 初期座標設定
+    
 
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
+
         key_lst = pg.key.get_pressed()#8-3
+        kk_ret.move_ip((-1,0))
         if key_lst[pg.K_UP]:
             kk_ret.move_ip((0,-1))#こうかトンの縦座標をー１する
         if key_lst[pg.K_DOWN]:
@@ -32,18 +35,21 @@ def main():
         if key_lst[pg.K_LEFT]:
             kk_ret.move_ip((-1,0))
         if key_lst[pg.K_RIGHT]:
-            kk_ret.move_ip((+1,0))
+            kk_ret.move_ip((+1*2,0))
+            
 
 
         x = -(tmr %3200)
+        
     #3 スクリーン全体に画像を張り付ける（大きい画像がからはる)
         screen.blit(bg_img, [x, 0])
         screen.blit(bg_img2, [x+1600, 0])
     #練習4 kk_imgを張り付けている
         screen.blit(bg_img, [x+3200, 0])
         screen.blit(bg_img2, [x+4800, 0])
+        screen.blit(kk_img,kk_ret) #練習４→練習8-5
         
-        screen.blit(kk_img, kk_ret) #練習４→練習8-5
+
         pg.display.update()
         tmr += 1        
         clock.tick(200)
