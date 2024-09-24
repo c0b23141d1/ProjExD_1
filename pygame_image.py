@@ -22,13 +22,14 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-#3 スクリーン全体に画像を張り付ける
-        screen.blit(bg_img, [0, 0])
-    #練習4
+        x = -(tmr %1600)
+    #3 スクリーン全体に画像を張り付ける（大きい画像がからはる)
+        screen.blit(bg_img, [-tmr, 0])
+    #練習4 kk_imgを張り付けている
         screen.blit(kk_img, [300, 200])
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(200)
 
 
 if __name__ == "__main__":
