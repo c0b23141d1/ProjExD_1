@@ -25,7 +25,9 @@ def main():
         screen.blit(txt, [300, 200])
         screen.blit(enn, [100, 400])
         pg.display.update()
-        tmr += 1        
+        tmr += 1
+        #これがないと一秒に(一回)フレームが回る
+        # 数が0.1とかになると遅くなる  
         clock.tick(1)
 
 
