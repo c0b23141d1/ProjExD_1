@@ -24,6 +24,8 @@ def main():
             if event.type == pg.QUIT: return
 #3 スクリーン全体に画像を張り付ける
         screen.blit(bg_img, [0, 0])
+    #練習4
+        screen.blit(kk_img, [300, 200])
         pg.display.update()
         tmr += 1        
         clock.tick(10)
