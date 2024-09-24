@@ -19,23 +19,36 @@ def main():
     kk_img = pg.transform.flip(kk_img,True,False) #左右反転 P44
     kk_ret = kk_img.get_rect() #練習8　サーフェースからレクとを抽出
     kk_ret.center = 300,200 #練習8-2 初期座標設定
-    
 
+    
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         key_lst = pg.key.get_pressed()#8-3
-        kk_ret.move_ip((-1,0))
+        move_x = 0
+        move_y = 0
+        if not any(key_lst):
+            move_x = -1
         if key_lst[pg.K_UP]:
-            kk_ret.move_ip((0,-1))#こうかトンの縦座標をー１する
+            move_x =-1
+            move_y = -1
+            #こうかトンの縦座標をー１する
+            
         if key_lst[pg.K_DOWN]:
-            kk_ret.move_ip((0,+1))
+            move_x = -1
+            move_y = +1
+            
         if key_lst[pg.K_LEFT]:
-            kk_ret.move_ip((-1,0))
+            move_x = +1
+            move_y = +1
+            
         if key_lst[pg.K_RIGHT]:
-            kk_ret.move_ip((+1*2,0))
+            move_x = +1 *2
+            move_y = -1
+            #kk_ret.move_ip((+1*2,0))
+        kk_ret.move_ip((move_x,move_y))   
             
 
 
