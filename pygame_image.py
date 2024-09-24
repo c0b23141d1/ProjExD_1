@@ -13,6 +13,7 @@ def main():
     clock  = pg.time.Clock()
     #1 画像を読み込む サーフェース
     bg_img = pg.image.load("fig/pg_bg.jpg")
+    bg_img2 = pg.transform.flip(bg_img,True,False)
     #練習2
     kk_img = pg.image.load("fig/3.png")
     kk_img = pg.transform.flip(kk_img,True,False) #左右反転 P44
@@ -22,11 +23,15 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        x = -(tmr %1600)
+        x = -(tmr %3200)
     #3 スクリーン全体に画像を張り付ける（大きい画像がからはる)
-        screen.blit(bg_img, [-tmr, 0])
+        screen.blit(bg_img, [x, 0])
+        screen.blit(bg_img2, [x+1600, 0])
     #練習4 kk_imgを張り付けている
+        screen.blit(bg_img, [x+3200, 0])
+        screen.blit(bg_img2, [x+4800, 0])
         screen.blit(kk_img, [300, 200])
+        
         pg.display.update()
         tmr += 1        
         clock.tick(200)
